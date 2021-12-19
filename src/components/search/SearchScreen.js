@@ -8,8 +8,9 @@ import { getHeroesByName } from '../../selectors/getHeroesByName';
 export const SearchScreen = ({ history }) => {
 
     const location = useLocation();
+    
     const { q = '' } = queryString.parse( location.search );
-
+    
     const [ formValues, handleInputChange ] = useForm({
         searchText: q
     });
@@ -63,7 +64,7 @@ export const SearchScreen = ({ history }) => {
                     <hr />
 
                     { 
-                        (q ==='') 
+                        (q === '') 
                             && 
                             <div className="alert alert-info">
                                 Search a hero

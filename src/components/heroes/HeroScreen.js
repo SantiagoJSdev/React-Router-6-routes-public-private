@@ -1,24 +1,22 @@
 import React, { useMemo } from 'react';
-import { useParams, Redirect } from 'react-router-dom';
+import { useParams, Navigate, useNavigate } from 'react-router-dom';
 import { getHeroById } from '../../selectors/getHeroById';
 
-export const HeroScreen = ({ history }) => {
-
+export const HeroScreen = () => {
+    
+   const navigate = useNavigate()
     const { heroeId } = useParams();
 console.log(heroeId)
     const hero = useMemo(() => getHeroById( heroeId ), [ heroeId ]);
 
     if ( !hero ) {
-        return <Redirect to="/" />;
+        return <Navigate to="/" />;
     }
+
 
     const handleReturn = () => {
 
-        if( history.length <=2 ) {
-            history.push('/');
-        } else {
-            history.goBack();
-        }
+        navigate(-1)
 
     }
 

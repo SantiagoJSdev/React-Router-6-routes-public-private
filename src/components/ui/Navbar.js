@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Link, NavLink, Redirect, useHistory } from 'react-router-dom'
+import { Link, NavLink, useHistory, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../auth/AuthContext'
 import { types } from '../../types/types'
 
@@ -7,10 +7,14 @@ export const Navbar = () => {
 
 
     const {user, dispatch} = useContext(AuthContext)
+    const navigate = useNavigate()
 
-    const history = useHistory()
+    // const history = useHistory()
 
 const handleLogout = ()=>{
+    navigate('/login', {
+        replace: true
+    })
 
     const action = {
         type: types.logout,
@@ -18,7 +22,7 @@ const handleLogout = ()=>{
     }
 
     dispatch(action)
-   history.replace('/login')
+//    history.replace('/login')
 }
 
     return (
@@ -35,27 +39,26 @@ const handleLogout = ()=>{
                 <div className="navbar-nav">
 
                     <NavLink 
-                        activeClassName="active"
-                        className="nav-item nav-link" 
-                        exact
+                        className= { ({isActive}) => "nav-item nav-link" + (isActive) ? 'active' : ''  }
+                        
                         to="/marvel"
                     >
                         Marvel
                     </NavLink>
 
                     <NavLink 
-                        activeClassName="active"
-                        className="nav-item nav-link" 
-                        exact
+                  
+                        className= { ({isActive}) => "nav-item nav-link" + (isActive) ? 'active' : ''  }
+                        
                         to="/dc"
                     >
                         DC
                     </NavLink>
                     
                     <NavLink 
-                        activeClassName="active"
-                        className="nav-item nav-link" 
-                        exact
+                        // activeClassName="active"
+                        className= { ({isActive}) => "nav-item nav-link" + (isActive) ? 'active' : ''  }
+                        // exact
                         to="/search"
                     >
                         Search
@@ -70,7 +73,7 @@ const handleLogout = ()=>{
                     <button 
                       
                         className="nav-item nav-link btn" 
-                      onClick={handleLogout}
+                        onClick={handleLogout}
                       
                     >
                         Logout

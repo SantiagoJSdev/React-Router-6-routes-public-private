@@ -16,7 +16,7 @@ const navegate =useNavigate()
         })
         const action = {
             type: types.login,
-            payload: {name: 'santiago'}
+            payload: {name: 'Santiago'}
         }
         dispatch(action)
     }

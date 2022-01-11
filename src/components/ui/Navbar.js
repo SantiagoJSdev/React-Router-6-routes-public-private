@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { Link, NavLink, useHistory, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../auth/AuthContext'
 import { types } from '../../types/types'
+import '../ui/navStyle.css'
 
 export const Navbar = () => {
 
@@ -26,60 +27,62 @@ const handleLogout = ()=>{
 }
 
     return (
-        <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-            
-            <Link 
-                className="navbar-brand" 
-                to="/"
-            >
-                Asociaciones
-            </Link>
+        //navbar navbar-expand-sm navbar-dark bg-dark
+        <div className="nav-container10"> 
 
-            <div className="navbar-collapse">
-                <div className="navbar-nav">
-
+            <div className='nav-2'>
                     <NavLink 
-                        className= { ({isActive}) => "nav-item nav-link" + (isActive) ? 'active' : ''  }
+                    className={'link'}
+                        // className= { ({isActive}) => "nav-item nav-link" + (isActive) ? 'active' : ''  }
                         
                         to="/marvel"
                     >
                         Marvel
                     </NavLink>
+            </div>
 
+            <div className='nav-3'>
                     <NavLink 
-                  
-                        className= { ({isActive}) => "nav-item nav-link" + (isActive) ? 'active' : ''  }
+                   className={'link'}
+                        // className= { ({isActive}) => "nav-item nav-link" + (isActive) ? 'active' : ''  }
                         
                         to="/dc"
                     >
                         DC
                     </NavLink>
-                    
+            </div>
+
+            <div className='nav-4'>
                     <NavLink 
+                     className={'link'}
                         // activeClassName="active"
-                        className= { ({isActive}) => "nav-item nav-link" + (isActive) ? 'active' : ''  }
+                        // className= { ({isActive}) => "nav-item nav-link" + (isActive) ? 'active' : ''  }
                         // exact
                         to="/search"
                     >
                         Search
                     </NavLink>
-                </div>
+            </div>
+            
+
+            <div className="nav-5">
+               
+
+                    <span >{user.name}</span>
             </div>
 
-            <div className="navbar-collapse collapse w-100 order-3 dual-collapse2">
-                <ul className="navbar-nav ml-auto">
-
-                    <span className='nav-item nav-link text-info'>{user.name}</span>
+            <div className="nav-6">
                     <button 
                       
-                        className="nav-item nav-link btn" 
+                        className="boton" 
                         onClick={handleLogout}
                       
                     >
                         Logout
                     </button>
-                </ul>
             </div>
-        </nav>
+              
+           
+        </div>
     )
 }
